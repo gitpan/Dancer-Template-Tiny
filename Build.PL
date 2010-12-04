@@ -1,21 +1,40 @@
+
 use strict;
 use warnings;
-use Module::Build;
 
-my $builder = Module::Build->new(
-    module_name         => 'Dancer::Template::Tiny',
-    license             => 'perl',
-    dist_author         => q{Sawyer X <xsawyerx@cpan.org>},
-    dist_version_from   => 'lib/Dancer/Template/Tiny.pm',
-    build_requires => {
-        'Test::More' => 0,
-    },
-    requires => {
-        'Dancer'         => 1.150,
-        'Template::Tiny' => 0.11,
-    },
-    add_to_cleanup      => [ 'Dancer-Template-Tiny-*' ],
-    create_makefile_pl => 'traditional',
+use Module::Build 0.3601;
+
+
+my %module_build_args = (
+  'build_requires' => {
+    'File::Find' => '0',
+    'File::Temp' => '0',
+    'Module::Build' => '0.3601',
+    'Test::More' => '0'
+  },
+  'configure_requires' => {
+    'ExtUtils::MakeMaker' => '6.31',
+    'Module::Build' => '0.3601'
+  },
+  'dist_abstract' => 'Template::Tiny backend to Dancer',
+  'dist_author' => [
+    'Sawyer X <xsawyerx@cpan.org>'
+  ],
+  'dist_name' => 'Dancer-Template-Tiny',
+  'dist_version' => '0.03',
+  'license' => 'perl',
+  'module_name' => 'Dancer::Template::Tiny',
+  'recommends' => {},
+  'recursive_test_files' => 1,
+  'requires' => {
+    'Dancer::FileUtils' => '0',
+    'Dancer::Template::Abstract' => '0',
+    'Template::Tiny' => '0'
+  },
+  'script_files' => []
 );
 
-$builder->create_build_script();
+
+my $build = Module::Build->new(%module_build_args);
+
+$build->create_build_script;

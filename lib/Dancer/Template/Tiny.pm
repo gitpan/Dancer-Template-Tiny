@@ -1,13 +1,17 @@
-package Dancer::Template::Tiny;
-
 use strict;
 use warnings;
+package Dancer::Template::Tiny;
+BEGIN {
+  $Dancer::Template::Tiny::VERSION = '0.03';
+}
+# ABSTRACT: Template::Tiny backend to Dancer
+
 use Template::Tiny;
 use Dancer::FileUtils 'read_file_content';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = '0.02';
+my $_template = Template::Tiny->new;
 
 sub render($$$) {
     my ( $self, $template, $tokens ) = @_;
@@ -21,7 +25,7 @@ sub render($$$) {
 
     my $content;
 
-    Template::Tiny->new->process(
+    $_template->process(
         \$template_data,
         $tokens,
         \$content,
@@ -32,7 +36,9 @@ sub render($$$) {
 
 1;
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
@@ -40,7 +46,7 @@ Dancer::Template::Tiny - Template::Tiny backend to Dancer
 
 =head1 VERSION
 
-Version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -127,4 +133,20 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
+
+=head1 AUTHOR
+
+  Sawyer X <xsawyerx@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Sawyer X.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
+
+__END__
 

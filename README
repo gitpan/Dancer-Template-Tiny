@@ -2,7 +2,7 @@ NAME
     Dancer::Template::Tiny - Template::Tiny backend to Dancer
 
 VERSION
-    Version 0.01
+    version 0.03
 
 SYNOPSIS
     This template engine allows you to use Template::Tiny in Dancer.
@@ -79,4 +79,13 @@ LICENSE AND COPYRIGHT
     by the Free Software Foundation; or the Artistic License.
 
     See http://dev.perl.org/licenses/ for more information.
+
+AUTHOR
+      Sawyer X <xsawyerx@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2010 by Sawyer X.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
